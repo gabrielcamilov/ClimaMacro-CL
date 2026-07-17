@@ -1,0 +1,59 @@
+# =============================================================================
+# ClimaMacro-CL — Configuración global del pipeline
+# =============================================================================
+
+project:
+  name: ClimaMacro-CL
+  version: "0.1.0"
+
+# ---------------------------------------------------------------------------
+# Fechas del dataset
+# ---------------------------------------------------------------------------
+data:
+  start_date: "1990-01-01"   # inicio del período de análisis
+  end_date: null              # null = hasta la fecha más reciente disponible
+
+# ---------------------------------------------------------------------------
+# Fuentes de datos
+# ---------------------------------------------------------------------------
+sources:
+  noaa_oni:
+    url: "https://www.cpc.ncep.noaa.gov/data/indices/oni.ascii.txt"
+    raw_path: "data/raw/noaa/oni_raw.txt"
+    processed_path: "data/processed/oni.parquet"
+
+  bcentral:
+    base_url: "https://si3.bcentral.cl/SieteRestWS/SieteRestWS.ashx"
+    ipc_series: "F073.IPC.IPC.INE.Z.Z.EP18.Z.6"
+    cobre_series: "F019.CLP.CLP.BCC.N.Z.Z.Z.6"
+    raw_path: "data/raw/bcentral/"
+    processed_path: "data/processed/bcentral.parquet"
+
+  dga:
+    # Código de estación: El Yeso (RM) — a confirmar en Día 3
+    station_code: "05410002-3"
+    raw_path: "data/raw/dga/"
+    processed_path: "data/processed/precipitaciones_rm.parquet"
+
+# ---------------------------------------------------------------------------
+# Procesamiento
+# ---------------------------------------------------------------------------
+processing:
+  merge_frequency: "MS"       # Month Start (pandas offset alias)
+  min_periods: 24             # mínimo de meses válidos para incluir una serie
+
+# ---------------------------------------------------------------------------
+# MLflow
+# ---------------------------------------------------------------------------
+mlflow:
+  experiment_name: "climamacro-cl-v1"
+  artifact_location: "mlruns"
+
+# ---------------------------------------------------------------------------
+# Logging
+# ---------------------------------------------------------------------------
+logging:
+  level: "INFO"
+  log_path: "logs/climamacro.log"
+  rotation: "100 MB"
+  retention: "30 days"

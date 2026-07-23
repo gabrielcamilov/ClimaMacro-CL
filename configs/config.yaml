@@ -24,8 +24,8 @@ sources:
 
   bcentral:
     base_url: "https://si3.bcentral.cl/SieteRestWS/SieteRestWS.ashx"
-    ipc_series: "F073.IPC.IPC.INE.Z.Z.EP18.Z.6"
-    cobre_series: "F019.CLP.CLP.BCC.N.Z.Z.Z.6"
+    ipc_series: "F074.IPC.VAR.Z.Z.C.M" 
+    cobre_series: "F019.PPB.PRE.100.D"
     raw_path: "data/raw/bcentral/"
     processed_path: "data/processed/bcentral.parquet"
 

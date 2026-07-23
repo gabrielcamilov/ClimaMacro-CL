@@ -141,7 +141,7 @@ pytest tests/ --cov=src --cov-report=html
 ## 🤝 Autor
 
 **Gabriel Verdejo**  
-Backend Developer @ BCI (vía Neoris) · ML Engineer en formación  
+Backend Developer · ML Engineer en formación  
 Python · Java/Spring Boot · Azure · GCP · MLflow · FastAPI  
 
 ---
